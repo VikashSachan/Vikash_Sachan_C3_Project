@@ -63,4 +63,17 @@ public class Restaurant {
         return name;
     }
 
+    public int displayTotalOrder(List<String> itemsInOrder){
+        int totalOrder =0;
+        for (String itemName : itemsInOrder){
+            Item item = this.findItemByName(itemName);
+            totalOrder = totalOrder + item.getPrice();
+        }
+        return totalOrder;
+    }
+
+    public void displayOrderCost(List<String> itemsInOrder){
+        System.out.println("Your order will cost Rs." + displayTotalOrder(itemsInOrder));
+    }
+
 }
