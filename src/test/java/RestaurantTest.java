@@ -84,4 +84,37 @@ class RestaurantTest {
                 ()->restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+    //<<<<<<<<<<<<<<<<<<<<<<<ORDER VALUE>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    @Test
+    public void get_total_order_value_equal_to_388(){
+        int actualTotalOrderValue = restaurant.displayTotalOrder(itemsInOrder);
+        int expectedTotalOrderValue = 388;
+
+        assertEquals(expectedTotalOrderValue,actualTotalOrderValue);
+    }
+
+    @Test
+    public void display_details_of_the_current_restaurant(){
+
+        String expectedDetails =
+                "Restaurant:Amelie's cafe\n"
+                        +"Location:Chennai\n"
+                        +"Opening time:10:30\n"
+                        +"Closing time:22:00\n"
+                        +"Menu:"+"\n" + "[Sweet corn soup:119\n, Vegetable lasagne:269\n]\n";
+
+        restaurant.displayDetails();
+        assertEquals(expectedDetails,outPutStream.toString());
+    }
+
+    @Test
+    public void display_total_order_value_with_message(){
+        String expectedMessage = "Your order will cost Rs.388\n";
+        restaurant.displayOrderCost(itemsInOrder);
+
+        assertEquals(expectedMessage,outPutStream.toString());
+    }
+
+    //<<<<<<<<<<<<<<<<<<<<<<<ORDER VALUE>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 }
